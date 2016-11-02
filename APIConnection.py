@@ -1,4 +1,4 @@
-#TODO: Add Comments
+#TODO: Add Comments and Structurize the code
 import requests as request
 
 tokenVal = "d2f2bccb39ae22ad239c31197251640f"
