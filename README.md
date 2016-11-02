@@ -1,4 +1,5 @@
 # Code2040-Zachare
+//REDO README
 For Code2040 application
 
 The objective of this project is to connect to an API and request a JSON dictionary
