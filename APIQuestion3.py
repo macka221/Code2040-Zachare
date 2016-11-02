@@ -1,3 +1,4 @@
+#TODO: Add Comments and structurize
 import requests as request
 from json import loads as load
 
