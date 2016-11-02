@@ -1,3 +1,4 @@
+#TODO: Add Comments and structurize
 import requests as request
 
 endpoint = "http://challenge.code2040.org/api/reverse"
