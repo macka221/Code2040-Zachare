@@ -1,3 +1,4 @@
+#TODO: Add Comments and structurize
 from json import loads as load
 import requests as request
 import datetime
