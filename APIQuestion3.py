@@ -1,4 +1,4 @@
-#TODO: Add Comments and structurize
+#TODO: Add Comments
 import requests as request
 from json import loads as load
 
@@ -10,24 +10,28 @@ prefix = ""
 array = []
 inDict = {"token":tokenVal, "prefix":prefix, "array":array}
 
-inAPI = request.post(prefixURL, json=inDict)
+def recieveAPI():
+    inAPI = request.post(prefixURL, json=inDict)
 
-tempStr = str(inAPI.content)
-tempStr = tempStr[2:-1]
-newDict = load(tempStr)
-DictArray = newDict['array']
-newPrefix = newDict['prefix']
-newArray = []
-prefixSize = len(newPrefix)
-sentinal = True
+    tempStr = str(inAPI.content)
+    tempStr = tempStr[2:-1]
+    newDict = load(tempStr)
+    DictArray = newDict['array']
+    newPrefix = newDict['prefix']
+    return newPrefix
 
-for i in DictArray:
-    if i[:prefixSize] != newPrefix:
-        newArray.append(i)
+def matchPrefix(newPrefix):
+    newArray = []
+    prefixSize = len(newPrefix)
+    sentinal = True
 
+    for i in DictArray:
+        if i[:prefixSize] != newPrefix:
+            newArray.append(i)
+            
+        outDict = {'token':tokenVal, 'array':newArray}
+        outAPI = request.post(validateURL, json=outDict)
+    return outAPI.content
 
-outDict = {'token':tokenVal, 'array':newArray}
-
-outAPI = request.post(validateURL, json=outDict)
-
-print(outAPI.content)
+data = recieveAPI()
+print(matchPrefix(data))
